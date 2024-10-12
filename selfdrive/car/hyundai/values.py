@@ -631,7 +631,7 @@ class CAR(Platforms):
   KIA_K9_2019 = HyundaiPlatformConfig(
     [HyundaiCarDocs("Kia K9 2019", car_parts=CarParts.common([CarHarness.hyundai_d]))],
     # steerRatio = variable
-    CarSpecs(mass=2005, wheelbase=3.105, steerRatio=13.6, tireStiffnessFactor=0.5)
+    CarSpecs(mass=2005, wheelbase=3.105, steerRatio=12.8, tireStiffnessFactor=0.5)
   )
   KIA_EV_SK3 = HyundaiPlatformConfig(
     [HyundaiCarDocs("Kia Soul EV 2019", car_parts=CarParts.common([CarHarness.hyundai_c]))],

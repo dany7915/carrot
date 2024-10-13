@@ -33,13 +33,16 @@ def create_lkas11(packer, frame, CP, apply_steer, steer_req,
   values["CF_Lkas_LdwsLHWarning"] = left_lane_depart
   values["CF_Lkas_LdwsRHWarning"] = right_lane_depart
   values["CR_Lkas_StrToqReq"] = apply_steer
-  values["CF_Lkas_ActToi"] = steer_req
+  values["CF_Lkas_ActToi"] = steer_req                    
   values["CF_Lkas_ToiFlt"] = torque_fault  # seems to allow actuation on CR_Lkas_StrToqReq
   values["CF_Lkas_MsgCount"] = frame % 0x10
 
   if CP.flags & HyundaiFlags.SEND_LFA.value:
     values["CF_Lkas_LdwsActivemode"] = int(left_lane) + (int(right_lane) << 1)
     values["CF_Lkas_LdwsOpt_USM"] = 2
+
+    # Some cars show an FCA fault when forwarding CF_Lkas_FusionState. Hide FCA Fault:
+    values["CF_Lkas_FusionState"] = 0
 
     # FcwOpt_USM 5 = Orange blinking car + lanes
     # FcwOpt_USM 4 = Orange car + lanes
